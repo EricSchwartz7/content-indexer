@@ -6,6 +6,8 @@
 
 * Send a 'POST' request to "content-indexer.herokuapp.com/api/v1/websites" with the parameter being an object with a key of "url" pointing to a string of the url that you'd like to index. i.e. `{url: "https://github.com"}`
 
+* Send a 'GET' request to "content-indexer.herokuapp.com/api/v1/websites/:id" for one specific website's headers and links
+
 #### If cloning for local use
 
 * Run `bundle` to install dependencies.
