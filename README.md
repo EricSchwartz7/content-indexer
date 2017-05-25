@@ -1,24 +1,17 @@
-# README
+# Content Indexer API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Usage as an external API
 
-Things you may want to cover:
+* Send a 'GET' request to "content-indexer.herokuapp.com/api/v1/websites" to receive a list of all websites stored in the database along with their headers and links.
 
-* Ruby version
+* Send a 'POST' request to "content-indexer.herokuapp.com/api/v1/websites" with the parameter being an object with a key of "url" pointing to a string of the url that you'd like to index. i.e. `{url: "https://github.com"}`
 
-* System dependencies
+#### If cloning for local use
 
-* Configuration
+* Run `bundle` to install dependencies.
 
-* Database creation
+* `rake db:migrate` to run the Postgres database migrations.
 
-* Database initialization
+* `rails test` will run the test suite.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* This API was developed in Ruby 2.3.1.
