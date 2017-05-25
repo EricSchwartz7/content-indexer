@@ -6,8 +6,10 @@ class Api::V1::WebsitesController < ApplicationController
   end
 
   def create
-    Scraper.parse(params[:url])
-    render json: Website.last
+    page = Scraper.parse(params[:url])
+    if !page.nil?
+      render json: Website.last
+    end
   end
 
   def show

@@ -12,14 +12,17 @@ class Scraper < ApplicationRecord
   end
 
   def self.parse(url)
-    website_id = store_website(url).id
     page = get_page(url)
-    h1 = page.css('h1').map { |h| h.text.strip }
-    h2 = page.css('h2').map { |h| h.text.strip }
-    h3 = page.css('h3').map { |h| h.text.strip }
-    links = page.css('a').map { |a| a }
-    store_headers(h1, h2, h3, website_id)
-    store_links(links, website_id)
+    if !page.nil?
+      website_id = store_website(url).id
+      h1 = page.css('h1').map { |h| h.text.strip }
+      h2 = page.css('h2').map { |h| h.text.strip }
+      h3 = page.css('h3').map { |h| h.text.strip }
+      links = page.css('a').map { |a| a }
+      store_headers(h1, h2, h3, website_id)
+      store_links(links, website_id)
+      page
+    end
   end
 
   def self.store_headers(h1, h2, h3, website_id)
